@@ -18,7 +18,7 @@ import { lazy, Suspense } from "react";
 const FloatingLines = lazy(() => import("../components/FloatingLines.jsx"));
 
 const WebGLPlaceholder = () => (
-  <div className="fixed inset-0 bg-[#05080B]" />
+  <div className="fixed inset-0 bg-[var(--bg-main)]" />
 );
 
 const iconMap = { Phone, MessageCircle, Mail, Globe, Instagram, Facebook, Linkedin };
@@ -36,7 +36,7 @@ export default function DigitalCard() {
   } = digitalCardData;
 
   return (
-    <main className="relative min-h-screen text-white flex justify-center bg-[#05080B]">
+    <main className="relative min-h-screen text-white flex justify-center bg-[var(--bg-main)]">
 
       {/* Background Animation */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -116,7 +116,7 @@ export default function DigitalCard() {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service} className="flex text-center justify-center items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-[#0045EF]" />
+                  <span className="h-2 w-2 rounded-full bg-primary" />
                   <span className="text-white">{service}</span>
                 </li>
               ))}
@@ -136,7 +136,7 @@ export default function DigitalCard() {
 
           {/* Location */}
           <section className="flex justify-center items-center gap-2 text-white mb-10">
-            <MapPin className="w-5 h-5 text-[#0045EF]" />
+            <MapPin className="w-5 h-5 text-primary" />
             {location}
           </section>
 
@@ -148,7 +148,7 @@ export default function DigitalCard() {
                 <a
                   key={social.icon}
                   href={social.href}
-                  className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[#0045EF]"
+                  className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
                 >
                   <IconComponent className="w-5 h-5" />
                 </a>
@@ -160,7 +160,7 @@ export default function DigitalCard() {
           <section className="mb-10">
             <button
               onClick={downloadVCF}
-              className="w-full h-14 flex items-center justify-center gap-2 rounded-lg font-semibold bg-[#0045EF] hover:bg-[#0037c1] transition-all"
+              className="w-full h-14 flex items-center justify-center gap-2 rounded-lg font-semibold bg-primary transition-all"
             >
               <Download className="w-5 h-5" />
               Save Contact
