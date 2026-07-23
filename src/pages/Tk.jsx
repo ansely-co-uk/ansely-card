@@ -1,19 +1,13 @@
 import {
   Phone,
-  MessageCircle,
-  Mail,
   Globe,
   MapPin,
-  Instagram,
-  Facebook,
-  Linkedin,
   Download,
   Star,
 } from "lucide-react";
 
-import { digitalCardData } from "../global";
-import { downloadVCF } from "../pages/downloadVCF.js";
-import { lazy, Suspense } from "react";
+import { digitalCardData ,downloadVCF } from "../data/TK/tk.js";
+import { lazy, Suspense, useState } from "react";
 
 const FloatingLines = lazy(() => import("../components/FloatingLines.jsx"));
 
@@ -21,9 +15,10 @@ const WebGLPlaceholder = () => (
   <div className="fixed inset-0 bg-[var(--bg-main)]" />
 );
 
-const iconMap = { Phone, MessageCircle, Mail, Globe, Instagram, Facebook, Linkedin };
+const iconMap = { Phone, Globe };
 
-export default function Ansely() {
+export default function TK() {
+  const [logoFailed, setLogoFailed] = useState(false);
   const {
     company,
     founder,
@@ -32,6 +27,7 @@ export default function Ansely() {
     services,
     rating,
     location,
+    locationHref,
     socialLinks,
   } = digitalCardData;
 
@@ -58,18 +54,32 @@ export default function Ansely() {
       <div className="relative z-10 w-full flex flex-col items-center">
 
         {/* Company Name - Usually wider/full width for impact */}
-        <header className="w-full max-w-md px-6 pt-16 pb-6 flex items-center justify-center gap-5 md:gap-8">
+        <header className="w-full max-w-md px-4 pt-16 pb-6 flex items-center justify-center gap-3 md:gap-8">
           <div className="relative shrink-0">
-            <div className="absolute inset-0 blur-2xl rounded-full scale-110" />
-            <img
-              src="/selva.jpeg"
-              alt={founder.name}
-              loading="lazy"
-              className="relative w-20 h-20 md:w-28 md:h-28 rounded-full object-cover border-2 border-white/10 shadow-2xl"
-            />
+            <div className="absolute inset-0 rounded-3xl bg-cyan-400/15 blur-2xl scale-110" />
+            {logoFailed ? (
+              <div className="relative flex w-20 h-20 md:w-28 md:h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
+                <div className="text-center leading-none">
+                  <div className="text-2xl md:text-3xl font-black tracking-[0.18em] text-white">TK</div>
+                  <div className="mt-1 text-[0.48rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-cyan-200">
+                    Auto
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="relative flex w-16 h-16 md:w-28 md:h-28 items-center justify-center rounded-3xl p-1 shadow-2xl shadow-black/30">
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  loading="lazy"
+                  onError={() => setLogoFailed(true)}
+                  className="h-full w-full object-contain drop-shadow-[0_4px_18px_rgba(15,23,42,0.35)]"
+                />
+              </div>
+            )}
           </div>
           <h1
-            className="text-4xl md:text-6xl font-bold tracking-[0.25em] text-white uppercase drop-shadow-lg"
+            className="min-w-0 text-[1rem] leading-none md:text-5xl font-bold tracking-[0.03em] md:tracking-[0.1em] text-white uppercase drop-shadow-lg whitespace-nowrap"
             style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
           >
             {company.name}
@@ -121,49 +131,67 @@ export default function Ansely() {
 
           {/* Services */}
           <section className="mb-10">
-            <h3 className="text-lg font-semibold mb-4 text-center">Key Services</h3>
+            <h3 className="text-lg font-semibold mb-4 text-center">Services</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service} className="flex text-center justify-center items-center gap-3">
+                <li key={service.label} className="flex text-center justify-center items-center gap-3">
                   <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-white">{service}</span>
+                  <span className="text-white">{service.label}</span>
                 </li>
               ))}
             </ul>
           </section>
 
           {/* Rating */}
-          <div className="rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md">
-            <div className="flex justify-center gap-1 mb-2">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            <p className="font-semibold mt-4">{rating.value} Google Rating</p>
-            <p className="text-sm text-gray-400 italic mt-2">{rating.text}</p>
-          </div>
+          {rating ? (
+            <a
+              href={rating.href}
+              target="_blank"
+              rel="noreferrer"
+              className="block rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md transition hover:border-cyan-300/40 hover:bg-white/8"
+            >
+              <div className="flex justify-center gap-1 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="font-semibold mt-4">{rating.value} Google Rating</p>
+              <p className="text-sm text-gray-400 italic mt-2">{rating.text}</p>
+            </a>
+          ) : null}
 
           {/* Location */}
-          <section className="flex justify-center items-center gap-2 text-white mb-10">
-            <MapPin className="w-5 h-5 text-primary" />
+          <a
+            href={locationHref}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-center items-center gap-2 text-white mb-10 hover:text-cyan-300 transition text-center"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
+              <MapPin className="w-4 h-4 text-primary" />
+            </span>
             {location}
-          </section>
+          </a>
 
           {/* Social */}
-          <section className="flex justify-center gap-4 mb-10">
-            {socialLinks.map((social) => {
-              const IconComponent = iconMap[social.icon];
-              return (
-                <a
-                  key={social.icon}
-                  href={social.href}
-                  className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
-                >
-                  <IconComponent className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </section>
+          {socialLinks.length ? (
+            <section className="flex justify-center gap-4 mb-10">
+              {socialLinks.map((social) => {
+                const IconComponent = iconMap[social.icon];
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
+                  >
+                    <IconComponent className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </section>
+          ) : null}
 
           {/* Save Contact Button */}
           <section className="mb-10">
@@ -178,7 +206,17 @@ export default function Ansely() {
 
           {/* Footer */}
           <footer className="text-center text-sm text-gray-400 opacity-60">
-            <p>&copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+            <p>
+              Powered by{" "}
+              <a
+                href="https://www.ansely.co.uk/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-white transition hover:text-cyan-300 hover:underline"
+              >
+                Ansely
+              </a>
+            </p>
           </footer>
         </div>
       </div>
