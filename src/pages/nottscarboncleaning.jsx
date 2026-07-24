@@ -1,28 +1,26 @@
 import {
   Phone,
-  MessageCircle,
   Mail,
   Globe,
   MapPin,
-  Instagram,
-  Facebook,
-  Linkedin,
   Download,
   Star,
+  Facebook,
+  Music2,
 } from "lucide-react";
 
-import { digitalCardData ,downloadVCF } from "../data/BoxFit/boxfit.js";
+import { digitalCardData ,downloadVCF } from "../data/notts-carboncleaning/nottscarboncleaning.js";
 import { lazy, Suspense, useState } from "react";
 
-const FloatingLines = lazy(() => import("../components/FloatingLines.jsx"));
+const FloatingLines = lazy(() => import("../components/FloatingLines.tsx"));
 
 const WebGLPlaceholder = () => (
   <div className="fixed inset-0 bg-[var(--bg-main)]" />
 );
 
-const iconMap = { Phone, MessageCircle, Mail, Globe, Instagram, Facebook, Linkedin };
+const iconMap = { Phone, Mail, Globe, MapPin, Facebook, TikTok: Music2 };
 
-export default function Boxfit() {
+export default function Nottscarboncleaning() {
   const [logoFailed, setLogoFailed] = useState(false);
   const {
     company,
@@ -32,6 +30,7 @@ export default function Boxfit() {
     services,
     rating,
     location,
+    locationHref,
     socialLinks,
   } = digitalCardData;
 
@@ -58,20 +57,20 @@ export default function Boxfit() {
       <div className="relative z-10 w-full flex flex-col items-center">
 
         {/* Company Name - Usually wider/full width for impact */}
-        <header className="w-full max-w-md px-6 pt-16 pb-6 flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-8 md:text-left">
+        <header className="w-full max-w-md px-6 pt-16 pb-6 flex flex-col items-center justify-center gap-5 text-center">
           <div className="relative shrink-0">
             <div className="absolute inset-0 rounded-3xl bg-cyan-400/15 blur-2xl scale-110" />
             {logoFailed ? (
-              <div className="relative flex w-20 h-20 md:w-28 md:h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
+              <div className="relative flex w-28 h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
                 <div className="text-center leading-none">
-                  <div className="text-2xl md:text-3xl font-black tracking-[0.18em] text-white">BF</div>
-                  <div className="mt-1 text-[0.48rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-cyan-200">
-                    Coaching
+                  <div className="text-3xl font-black tracking-[0.12em] text-white">NCC</div>
+                  <div className="mt-1 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-cyan-200">
+                    Carbon Cleaning
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="relative flex w-20 h-20 md:w-28 md:h-28 items-center justify-center rounded-3xl p-1 shadow-2xl shadow-black/30">
+              <div className="relative flex w-28 h-28 items-center justify-center rounded-3xl p-2 shadow-2xl shadow-black/30">
                 <img
                   src={company.logo}
                   alt={company.name}
@@ -83,7 +82,7 @@ export default function Boxfit() {
             )}
           </div>
           <h1
-            className="max-w-[11ch] text-3xl font-bold uppercase leading-tight tracking-[0.14em] text-white drop-shadow-lg md:max-w-none md:text-5xl"
+            className="text-[2rem] font-bold uppercase leading-[0.95] tracking-[0.08em] text-white drop-shadow-lg sm:text-[2.4rem]"
             style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
           >
             {company.name}
@@ -138,9 +137,23 @@ export default function Boxfit() {
             <h3 className="text-lg font-semibold mb-4 text-center">Services</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service.label} className="flex text-center justify-center items-center gap-3">
-                  <span className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-white">{service.label}</span>
+                <li key={service.label}>
+                  {service.href ? (
+                    <a
+                      href={service.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex text-center justify-center items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition hover:border-cyan-300/40 hover:bg-white/10"
+                    >
+                      <span className="h-2 w-2 rounded-full bg-primary" />
+                      <span className="text-white">{service.label}</span>
+                    </a>
+                  ) : (
+                    <div className="flex text-center justify-center items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
+                      <span className="h-2 w-2 rounded-full bg-primary" />
+                      <span className="text-white">{service.label}</span>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
@@ -165,28 +178,37 @@ export default function Boxfit() {
           ) : null}
 
           {/* Location */}
-          <section className="flex justify-center items-center gap-2 text-white mb-10">
-            <MapPin className="w-5 h-5 text-primary" />
+          <a
+            href={locationHref}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-center items-center gap-2 text-white mb-10 hover:text-cyan-300 transition text-center"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
+              <MapPin className="w-4 h-4 text-primary" />
+            </span>
             {location}
-          </section>
+          </a>
 
           {/* Social */}
-          <section className="flex justify-center gap-4 mb-10">
-            {socialLinks.map((social) => {
-              const IconComponent = iconMap[social.icon];
-              return (
-                <a
-                  key={social.icon}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
-                >
-                  <IconComponent className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </section>
+          {socialLinks.length ? (
+            <section className="flex justify-center gap-4 mb-10">
+              {socialLinks.map((social) => {
+                const IconComponent = iconMap[social.icon];
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
+                  >
+                    <IconComponent className="w-5 h-5" />
+                  </a>
+                );
+              })}
+            </section>
+          ) : null}
 
           {/* Save Contact Button */}
           <section className="mb-10">
