@@ -138,14 +138,12 @@ export default function Dtdetails() {
                       href={service.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex text-center justify-center items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition hover:border-cyan-300/40 hover:bg-white/10"
+                      className="flex text-center justify-center items-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition hover:border-cyan-300/40 hover:bg-white/10"
                     >
-                      <span className="h-2 w-2 rounded-full bg-primary" />
                       <span className="text-white">{service.label}</span>
                     </a>
                   ) : (
-                    <div className="flex text-center justify-center items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-4 py-3">
-                      <span className="h-2 w-2 rounded-full bg-primary" />
+                    <div className="flex text-center justify-center items-center rounded-lg border border-white/10 bg-white/5 px-4 py-3">
                       <span className="text-white">{service.label}</span>
                     </div>
                   )}

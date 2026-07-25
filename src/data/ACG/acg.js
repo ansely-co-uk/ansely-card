@@ -5,7 +5,7 @@ export const digitalCardData = {
     logo: "/ACG.png",
   },
   founder: {
-    name: "ACG Auto Centre",
+    name: "Tom",
     title: "MOT, Servicing, and Repair Specialists",
   },
   contacts: [
