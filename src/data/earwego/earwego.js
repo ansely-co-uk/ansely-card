@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Ear We Go",
     tagline: "Professional ear care with simple, effective micro suction treatment.",
-    logo: "/earwego/earwego.webp",
+    logo: "/earwegoim/earwego.webp",
   },
   founder: {
     name: "Rab",

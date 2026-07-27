@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Stoneley's",
     tagline: "Trusted garage services for MOTs, diagnostics, tyres, servicing, and repairs.",
-    logo: "/stoneleys/stoneleys.webp",
+    logo: "/stoneleysim/stoneleys.webp",
   },
   founder: {
     name: "Adam",

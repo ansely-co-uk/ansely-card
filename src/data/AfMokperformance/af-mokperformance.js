@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "AF MOK Performance",
     tagline: "Performance tuning, diagnostics, and repairs built around real-world drivability.",
-    logo: "/af-mokperformance/afmok.png",
+    logo: "/af-mokperformanceim/afmok.png",
   },
   founder: {
     name: "Florian",

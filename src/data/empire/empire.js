@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Empire Scaffolding",
     tagline: "Reliable scaffolding supply, erection, and dismantling for projects of every scale.",
-    logo: "/empire/empire.png",
+    logo: "/empireim/empire.png",
   },
   founder: {
     name: "Claire",

@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "SL Smart Repair",
     tagline: "Smart repair solutions for everyday damage, refinishing, and vehicle presentation.",
-    logo: "/slsmartrepair/slsmart.png",
+    logo: "/slsmartrepairim/slsmart.png",
   },
   founder: {
     name: "Shane",

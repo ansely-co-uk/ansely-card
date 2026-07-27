@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Tomas Exteriors",
     tagline: "Window tinting, restoration, and finishing services for sharper exterior presentation.",
-    logo: "/Tomas/Tomas.webp",
+    logo: "/Tomasim/Tomas.webp",
   },
   founder: {
     name: "Tom",

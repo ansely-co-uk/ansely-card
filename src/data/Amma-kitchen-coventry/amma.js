@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Amma Kitchen",
     tagline: "Homestyle South Asian cooking with comforting favourites and bold everyday flavour.",
-    logo: "/Amma-kitchen-coventry/amma.webp",
+    logo: "/Amma-kitchen-coventryim/amma.webp",
   },
   founder: {
     name: "Dharsha",

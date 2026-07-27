@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Abbey Tyres",
     tagline: "Tyres, MOT, brakes, servicing, and workshop support for everyday vehicle care.",
-    logo: "/Abbey/abbey.webp",
+    logo: "/Abbeyim/abbey.webp",
   },
   founder: {
     name: "Sahera",

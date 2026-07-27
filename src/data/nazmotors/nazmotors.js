@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Naz Motors",
     tagline: "MOT, repairs, servicing, and vehicle parts support under one roof.",
-    logo: "/nazmotors/naz.png",
+    logo: "/nazmotorsim/naz.png",
   },
   founder: {
     name: "Naz",

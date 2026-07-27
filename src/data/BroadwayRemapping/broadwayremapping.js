@@ -2,7 +2,7 @@ export const digitalCardData = {
   company: {
     name: "Broadway Remapping",
     tagline: "Professional ECU remapping and vehicle tuning for performance, efficiency, and reliability.",
-    logo: "/broadway-remapping/broadway-remapping-logo.webp",
+    logo: "/broadway-remappingim/broadway-remapping-logo.webp",
   },
   founder: {
     name: "Mark",
