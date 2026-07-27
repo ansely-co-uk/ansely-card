@@ -14,7 +14,7 @@ import { lazy, Suspense, useState } from "react";
 const FloatingLines = lazy(() => import("../components/FloatingLines.jsx"));
 
 const WebGLPlaceholder = () => (
-  <div className="fixed inset-0 bg-[var(--bg-main)]" />
+  <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.18),_rgba(17,17,17,0.96)_38%,_rgba(0,0,0,1)_100%)]" />
 );
 
 const iconMap = { Phone, Mail, Globe, MapPin, Facebook: FaFacebookF };
@@ -34,7 +34,9 @@ export default function EliteWheelsGlasgow() {
   } = digitalCardData;
 
   return (
-    <main className="relative min-h-screen text-white flex justify-center bg-[var(--bg-main)]">
+    <main className="relative min-h-screen text-white flex justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.18),_rgba(24,18,8,0.95)_30%,_rgba(9,9,11,0.98)_62%,_rgba(0,0,0,1)_100%)]">
+
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(212,175,55,0.06),transparent_24%,transparent_76%,rgba(255,255,255,0.02))]" />
 
       {/* Background Animation */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -47,7 +49,7 @@ export default function EliteWheelsGlasgow() {
             bendStrength={4}
             interactive={true}
             parallax={true}
-            linesGradient={["#001F7F", "#0045EF", "#0066FF", "#3399FF", "#66B3FF"]}
+            linesGradient={["#4A3512", "#8A6421", "#C89B3C", "#F4C95E", "#FFF2C2"]}
           />
         </Suspense>
       </div>
@@ -58,7 +60,7 @@ export default function EliteWheelsGlasgow() {
         {/* Company Name - Usually wider/full width for impact */}
         <header className="w-full max-w-md px-4 pt-16 pb-6 flex flex-col items-center justify-center gap-4 text-center">
           <div className="relative shrink-0">
-            <div className="absolute inset-0 rounded-3xl bg-cyan-400/15 blur-2xl scale-110" />
+            <div className="absolute inset-0 rounded-3xl bg-amber-300/15 blur-2xl scale-110" />
             {logoFailed ? (
               <div className="relative flex w-20 h-20 md:w-28 md:h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
                 <div className="text-center leading-none">
@@ -69,13 +71,13 @@ export default function EliteWheelsGlasgow() {
                 </div>
               </div>
             ) : (
-              <div className="relative flex w-22 h-22 md:w-30 md:h-30 items-center justify-center rounded-3xl bg-white/92 p-2 shadow-2xl shadow-black/30 ring-1 ring-white/20">
+              <div className="relative flex w-24 h-24 md:w-32 md:h-32 items-center justify-center overflow-hidden rounded-3xl border border-[#c89b3c]/35 bg-[radial-gradient(circle_at_top,_rgba(244,201,94,0.22),_rgba(17,24,39,0.96)_55%,_rgba(0,0,0,1)_100%)] p-3 shadow-2xl shadow-black/40 ring-1 ring-[#f4c95e]/20 backdrop-blur-sm">
                 <img
                   src={company.logo}
                   alt={company.name}
                   loading="lazy"
                   onError={() => setLogoFailed(true)}
-                  className="h-full w-full object-contain drop-shadow-[0_4px_18px_rgba(15,23,42,0.2)]"
+                  className="h-full w-full object-contain drop-shadow-[0_10px_26px_rgba(244,201,94,0.18)]"
                 />
               </div>
             )}
