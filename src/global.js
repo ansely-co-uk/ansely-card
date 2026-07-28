@@ -586,7 +586,7 @@ export const digitalCardDataSRK = {
     logo: "/srk.png",
   },
   founder: {
-    name: "SRK HOSPITALITY LIMITED",
+    name: "Raghu",
     title: "Hospitality & Dining",
   },
   contacts: [

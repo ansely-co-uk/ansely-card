@@ -16,10 +16,12 @@ import { lazy, Suspense } from "react";
 const FloatingLines = lazy(() => import("../../../components/FloatingLines.tsx"));
 
 const WebGLPlaceholder = () => (
-    <div className="fixed inset-0 bg-[var(--bg-main)]" />
+    <div className="fixed inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,215,0,0.28),_rgba(58,42,6,0.94)_34%,_rgba(18,14,4,0.98)_62%,_rgba(8,6,2,1)_100%)]" />
 );
 
 const iconMap = { Phone, MessageCircle, Mail, Globe, Facebook: FaFacebook, Instagram: FaInstagram };
+const srkGoldTextClass = "text-[#D4AF37]";
+const srkGoldHoverClass = "hover:border-[#D4AF37]/40 hover:bg-[#D4AF37]/10";
 
 export default function SRK() {
     const {
@@ -36,7 +38,8 @@ export default function SRK() {
     } = digitalCardDataSRK;
 
     return (
-        <main className="relative min-h-screen text-white flex justify-center bg-[var(--bg-main)]">
+        <main className="relative min-h-screen overflow-hidden text-white flex justify-center bg-[radial-gradient(circle_at_top,_rgba(255,215,0,0.32),_rgba(78,58,10,0.94)_28%,_rgba(24,18,6,0.98)_58%,_rgba(8,6,2,1)_100%)]">
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,220,0.06),transparent_20%,transparent_80%,rgba(255,215,0,0.08))]" />
 
             {/* Background Animation */}
             <div className="fixed inset-0 z-0 pointer-events-none">
@@ -49,7 +52,7 @@ export default function SRK() {
                         bendStrength={4}
                         interactive={true}
                         parallax={true}
-                        linesGradient={["#001F7F", "#0045EF", "#0066FF", "#3399FF", "#66B3FF"]}
+                        linesGradient={["#4A3B06", "#8D7110", "#C8A81B", "#D4AF37", "#F7E7A1"]}
                     />
                 </Suspense>
             </div>
@@ -123,7 +126,7 @@ export default function SRK() {
                                         href={service.href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-center text-white transition hover:border-cyan-300/40 hover:bg-white/8"
+                                        className={`flex w-full items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-center text-white transition ${srkGoldHoverClass}`}
                                     >
                                         {service.label}
                                     </a>
@@ -133,11 +136,8 @@ export default function SRK() {
                     </section>
 
                     {/* Rating */}
-                    <a
-                        href={ratingUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="block rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md transition hover:scale-[1.01] active:scale-[0.99]"
+                    <div
+                        className="block rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md"
                     >
                         <div className="flex justify-center gap-1 mb-2">
                             {[...Array(5)].map((_, i) => (
@@ -146,18 +146,15 @@ export default function SRK() {
                         </div>
                         <p className="font-semibold mt-4">{rating.value} Google Rating</p>
                         <p className="text-sm text-gray-400 italic mt-2">{rating.text}</p>
-                    </a>
+                    </div>
 
                     {/* Location */}
-                    <a
-                        href={locationUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex justify-center items-center gap-2 text-white mb-10 transition hover:opacity-90"
+                    <div
+                        className="flex justify-center items-center gap-2 text-white mb-10"
                     >
-                        <MapPin className="w-5 h-5 text-primary" />
+                        <MapPin className={`w-5 h-5 ${srkGoldTextClass}`} />
                         {location}
-                    </a>
+                    </div>
 
                     {/* Social */}
                     <section className="flex justify-center gap-4 mb-10">
