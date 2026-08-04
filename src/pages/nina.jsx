@@ -1,39 +1,25 @@
 import {
   Phone,
-  Mail,
   Globe,
   MapPin,
   Download,
   Star,
-  MessageCircle,
   Instagram,
   Facebook,
-  Linkedin,
-  Music2,
 } from "lucide-react";
 
-import { digitalCardData ,downloadVCF } from "../data/kerbcreteltd/kerbcreteltd.js";
+import { digitalCardData ,downloadVCF } from "../data/nina/nina.js";
 import { lazy, Suspense, useState } from "react";
 
-const FloatingLines = lazy(() => import("../components/FloatingLines.jsx"));
+const FloatingLines = lazy(() => import("../components/FloatingLines.tsx"));
 
 const WebGLPlaceholder = () => (
-  <div className="fixed inset-0 bg-[var(--bg-main)]" />
+  <div className="fixed inset-0 bg-[#3E271B]" />
 );
 
-const iconMap = {
-  Phone,
-  Mail,
-  Globe,
-  MapPin,
-  MessageCircle,
-  Instagram,
-  Facebook,
-  Linkedin,
-  TikTok: Music2,
-};
+const iconMap = { Phone, Globe, MapPin, Instagram, Facebook };
 
-export default function Kerbcreteltd() {
+export default function Nina() {
   const [logoFailed, setLogoFailed] = useState(false);
   const {
     company,
@@ -48,7 +34,8 @@ export default function Kerbcreteltd() {
   } = digitalCardData;
 
   return (
-    <main className="relative min-h-screen text-white flex justify-center bg-[var(--bg-main)]">
+    <main className="relative min-h-screen text-white flex justify-center overflow-hidden bg-[#3E271B]">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(224,180,127,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(139,90,60,0.32),transparent_36%),linear-gradient(180deg,#4A2E20_0%,#3E271B_52%,#26160F_100%)]" />
 
       {/* Background Animation */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -61,7 +48,7 @@ export default function Kerbcreteltd() {
             bendStrength={4}
             interactive={true}
             parallax={true}
-            linesGradient={["#001F7F", "#0045EF", "#0066FF", "#3399FF", "#66B3FF"]}
+            linesGradient={["#E0B47F", "#C98A57", "#B87947", "#8B5A3C", "#5A3725"]}
           />
         </Suspense>
       </div>
@@ -70,26 +57,26 @@ export default function Kerbcreteltd() {
       <div className="relative z-10 w-full flex flex-col items-center">
 
         {/* Company Name - Usually wider/full width for impact */}
-        <header className="w-full max-w-md px-4 pt-16 pb-6 flex flex-col items-center justify-center gap-4 text-center">
+        <header className="w-full max-w-md px-6 pt-16 pb-6 flex flex-col items-center justify-center gap-5 text-center">
           <div className="relative shrink-0">
-            <div className="absolute inset-0 rounded-3xl bg-cyan-400/15 blur-2xl scale-110" />
-            {logoFailed || !company.logo ? (
-              <div className="relative flex w-20 h-20 md:w-28 md:h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
+            <div className="absolute inset-0 rounded-3xl bg-[#C98A57]/20 blur-2xl scale-110" />
+            {logoFailed ? (
+              <div className="relative flex w-28 h-28 items-center justify-center rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
                 <div className="text-center leading-none">
-                  <div className="text-2xl md:text-3xl font-black tracking-[0.18em] text-white">KML</div>
-                  <div className="mt-1 text-[0.48rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                    Repair
+                  <div className="text-3xl font-black tracking-[0.08em] text-white">Nina's</div>
+                  <div className="mt-1 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-[#E0B47F]">
+                    Coffee Shop
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="relative flex w-22 h-22 md:w-30 md:h-30 items-center justify-center rounded-3xl bg-white/95 p-2 shadow-2xl shadow-black/30 ring-1 ring-white/20">
+              <div className="relative flex w-32 h-32 items-center justify-center rounded-3xl border border-[#E0B47F]/20 bg-[linear-gradient(180deg,rgba(255,248,239,0.12),rgba(255,248,239,0.04))] p-2 shadow-2xl shadow-black/30">
                 <img
                   src={company.logo}
                   alt={company.name}
                   loading="lazy"
                   onError={() => setLogoFailed(true)}
-                  className="h-full w-full object-contain drop-shadow-[0_4px_18px_rgba(15,23,42,0.2)]"
+                  className="h-full w-full object-contain drop-shadow-[0_4px_18px_rgba(15,23,42,0.35)]"
                 />
               </div>
             )}
@@ -150,7 +137,7 @@ export default function Kerbcreteltd() {
                       href={service.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex text-center justify-center items-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition hover:border-cyan-300/40 hover:bg-white/10"
+                      className="flex text-center justify-center items-center rounded-lg border border-white/10 bg-white/5 px-4 py-3 transition hover:border-[#E0B47F]/40 hover:bg-white/10"
                     >
                       <span className="text-white">{service.label}</span>
                     </a>
@@ -170,14 +157,14 @@ export default function Kerbcreteltd() {
               href={rating.href}
               target="_blank"
               rel="noreferrer"
-              className="block rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md transition hover:border-cyan-300/40 hover:bg-white/8"
+              className="block rounded-xl p-6 text-center mb-10 border border-white/10 bg-white/5 backdrop-blur-md transition hover:border-[#E0B47F]/40 hover:bg-white/8"
             >
               <div className="flex justify-center gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="font-semibold mt-4">{rating.value} Google Rating</p>
+              <p className="font-semibold mt-4">{rating.value}</p>
               <p className="text-sm text-gray-400 italic mt-2">{rating.text}</p>
             </a>
           ) : null}
@@ -187,10 +174,10 @@ export default function Kerbcreteltd() {
             href={locationHref}
             target="_blank"
             rel="noreferrer"
-            className="flex justify-center items-center gap-2 text-white mb-10 hover:text-cyan-300 transition text-center"
+            className="flex justify-center items-center gap-2 text-white mb-10 hover:text-[#E0B47F] transition text-center"
           >
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10">
-              <MapPin className="w-4 h-4 text-primary" />
+              <MapPin className="w-4 h-4 text-[#E0B47F]" />
             </span>
             {location}
           </a>
@@ -206,7 +193,7 @@ export default function Kerbcreteltd() {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[var(--primary)]"
+                    className="h-12 w-12 rounded-full flex items-center justify-center transition bg-white/10 hover:bg-[#8B5A3C]"
                   >
                     <IconComponent className="w-5 h-5" />
                   </a>
@@ -219,7 +206,7 @@ export default function Kerbcreteltd() {
           <section className="mb-10">
             <button
               onClick={downloadVCF}
-              className="w-full h-14 flex items-center justify-center gap-2 rounded-lg font-semibold bg-primary transition-all"
+              className="w-full h-14 flex items-center justify-center gap-2 rounded-lg font-semibold bg-[#8B5A3C] transition-all hover:bg-[#9E6948]"
             >
               <Download className="w-5 h-5" />
               Save Contact
@@ -234,7 +221,7 @@ export default function Kerbcreteltd() {
                 href="https://www.ansely.co.uk/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-white transition hover:text-cyan-300 hover:underline"
+                className="text-white transition hover:text-[#E0B47F] hover:underline"
               >
                 Ansely
               </a>

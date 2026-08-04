@@ -81,6 +81,7 @@ import Advanced from "./pages/advanced.jsx";
 import Ukplatelab from "./pages/ukplatelab.jsx";
 import Kerbcreteltd from "./pages/kerbcreteltd.jsx";
 import Topstar from "./pages/topstar.jsx";
+import Nina from "./pages/nina.jsx";
 function App() {
   return (
     <Router>
@@ -176,6 +177,7 @@ function App() {
         <Route path="/ukplatelab" element={<Ukplatelab />} />
         <Route path="/kerbcreteltd" element={<Kerbcreteltd />} />
         <Route path="/topstar" element={<Topstar />} />
+        <Route path="/nina" element={<Nina />} />
 
       </Routes>
     </Router>
