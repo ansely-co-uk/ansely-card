@@ -2,10 +2,10 @@ export const digitalCardData = {
     company: {
         name: "FX Pedal Planet Limited",
         tagline: "At FX Pedal Planet Online Store, we're dedicated to providing the musical community with top quality.",
-        logo: "/fxpadel.svg",
+        logo: "/fxpadel.png",
     },
     founder: {
-        name: "FX Pedal Planet Limited",
+        name: "Steve",
         title: "FX Pedal Planet Online Store",
     },
     contacts: [
